@@ -28,6 +28,8 @@ services:
     depends_on:
       database:
         condition: service_healthy
+    networks:
+      - net
 
   database:
     # Minimum supported version is 13.
@@ -51,7 +53,14 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - net
 
 volumes:
   pg_data:
     name: postgres-coder-data
+
+networks:
+  net:
+    name: coder-network
+    external: false
