@@ -24,7 +24,7 @@ services:
       # Run "docker volume rm coder_coder_home" to reset the dev tunnel url (https://abc.xyz.try.coder.app).
       # This volume is not required in a production environment - you may safely remove it.
       # Coder can recreate all the files it needs on restart.
-      - ./config:/home/coder
+      - coder_data:/home/coder
       - ${CODER_FOLDER}:/projects
     depends_on:
       database:
@@ -58,6 +58,8 @@ services:
       - net
 
 volumes:
+  coder_data:
+    name: coder-app-data
   pg_data:
     name: postgres-coder-data
 
