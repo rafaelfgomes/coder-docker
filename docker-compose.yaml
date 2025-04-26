@@ -5,7 +5,7 @@ services:
     image: ghcr.io/coder/coder:${CODER_VERSION:-latest}
     container_name: coder-app
     ports:
-      - "{CODER_HTTP_PORT:-7080}:7080"
+      - "${CODER_HTTP_PORT:-7080}:7080"
     environment:
       CODER_PG_CONNECTION_URL: "postgresql://${POSTGRES_USER:-username}:${POSTGRES_PASSWORD:-password}@database/${POSTGRES_DB:-coder}?sslmode=disable"
       CODER_HTTP_ADDRESS: "0.0.0.0:7080"
